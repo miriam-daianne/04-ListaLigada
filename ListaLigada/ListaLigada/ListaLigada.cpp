@@ -128,18 +128,25 @@ void inserirElemento()
 	cin >> novo->valor;
 	novo->prox = NULL;
 
-	if (primeiro == NULL)
-	{
+	
+	NO* aux = primeiro;
+	while (aux != NULL) {
+		if (aux->valor == novo->valor) {
+			cout << "Elemento ja existente na lista, digite outro valor." << endl;
+			return;
+		}
+		aux = aux->prox;
+	}
+
+	if (primeiro == NULL) {
 		primeiro = novo;
 	}
-	else
-	{
-		// procura o final da lista
-		NO* aux = primeiro;
+	else {
+		aux = primeiro;
 		while (aux->prox != NULL) {
 			aux = aux->prox;
 		}
-		aux->prox = novo;
+		aux->prox = novo; 
 	}
 }
 
